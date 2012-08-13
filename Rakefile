@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "column_sort"
   gem.homepage = "http://github.com/jeremiahishere/column_sort"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Column sorting for index pages" 
+  gem.description = "Column sorting for index pages"
   gem.email = "jeremiah@cloudspace.com"
   gem.authors = ["Jeremiah Hemphill"]
   # dependencies defined in Gemfile

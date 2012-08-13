@@ -1,6 +1,39 @@
 = column_sort
 
-Description goes here.
+Sort columns for index pages on admins.
+
+== Installation
+
+Add to your Gemfile
+
+    gem "column_sort"
+
+Mark sortable fields in the model
+
+    class Person < ActiveRecord::Base
+
+      scope :column_sort_first_name_asc, lambda { order("people.first_name ASC")  }
+      scope :column_sort_first_name_desc, lambda { order("people.first_name DESC")  }
+      ...
+      sortable_fields [:first_name, :last_name, :date_of_birth]
+
+* IMPORTANT NOTE: the sortable fields call must go after all of the sorting scopes due to ruby mixin load order
+* Complex sorts can always be added with the syntax scope :column_sort_<fieldname>_asc
+
+Add the sorting scope to the query in the controller and set a default sort (optional)
+
+    class PeopleController < ApplicationController
+      def index
+        default_column_sort(:last_name)
+        @people = Person.active.column_sort(params[:column_sort])
+      end
+
+Use the helper on the view to link to sorted links to the page
+
+    %table
+      %th
+        First Name
+        = column_sort :first_name
 
 == Contributing to column_sort
  
@@ -16,4 +49,3 @@ Description goes here.
 
 Copyright (c) 2012 Jeremiah Hemphill. See LICENSE.txt for
 further details.
-
