@@ -29,7 +29,12 @@ module ColumnSort
 
       # set default link attributes
       # note that we default to ascending search
-      link_attributes = {:column_sort => { :column => column_symbol, :direction => "asc" }}
+      link_attributes = params.merge({
+        :column_sort => { 
+          :column => column_symbol, 
+          :direction => "asc" 
+        }
+      })
 
       # start building the link text
       link_text = column_name

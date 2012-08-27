@@ -1,3 +1,7 @@
+== 0.0.2
+
+* Takes params hash into account when generating the new link
+
 == 0.0.1
 
 * Basic features complete
