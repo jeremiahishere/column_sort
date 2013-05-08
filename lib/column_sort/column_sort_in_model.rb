@@ -25,9 +25,12 @@ module ColumnSort
         self.sortable_column_list = columns
 
         columns.each do |column|
-          if !self.respond_to?("column_sort_#{column}_asc") || !self.respond_to?("column_sort_#{column}_desc")
-            throw "Missing sort scope for #{column}"
-          end 
+          if !self.respond_to?("column_sort_#{column}_asc")
+            throw "Missing ascending sort scope for #{column}"
+          end
+          if !self.respond_to?("column_sort_#{column}_desc")
+            throw "Missing descending sort scope for #{column}"
+          end
         end 
       end 
 
